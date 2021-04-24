@@ -1,5 +1,5 @@
+<h1>{{{title}}}</h1>
 <form method="post" action="/login">
-    <h1>Welcome, please login to your account</h1>
     <label for="Username">
         Username
         <input type="text" id="Username" name="Username" />
@@ -13,3 +13,8 @@
         <button type="submit">Submit</button>
     </label>
 </form>
+{{#if failed}}
+<div>
+<p>{{error}}</p>
+</div>
+{{/if}}

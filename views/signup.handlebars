@@ -1,5 +1,5 @@
+<h1>{{{title}}}</h1>
 <form method="post" action="/signup">
-    <h1>Welcome, please sign up to create account</h1>
     <label for="Username">
         Username
         <input type="text" id="Username" name="Username" />
@@ -17,3 +17,8 @@
         <button type="submit">Submit</button>
     </label>
 </form>
+{{#if failed}}
+<div>
+<p>{{error}}</p>
+</div>
+{{/if}}

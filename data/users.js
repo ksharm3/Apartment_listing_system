@@ -3,7 +3,7 @@ const Users = mongoCollections.users;
 let { ObjectId } = require('mongodb');
 const bcrypt = require('bcryptjs');
 const owasp = require('owasp-password-strength-test');
-//const uuid = require('uuid/v4');
+//const uuid = require('uuid/v4');      
 
 var salt = bcrypt.genSaltSync(9);
 /*owasp.config({
@@ -26,12 +26,9 @@ module.exports = {
   // This is a fun new syntax that was brought forth in ES6, where we can define
   // methods on an object with this shorthand!
 
-  async getUserById(id) {
-    //console.log("We are in GetUsersByID");
+  async getUserById(id) { 
     const userCollection = await Users();
     let parsedId = ObjectId(id);
-    //console.log(parsedId);
-    //console.log(id);
     const user = await userCollection.findOne({ _id: parsedId });
     if (!user) throw 'Book Not Found';
     return user;
@@ -40,12 +37,15 @@ module.exports = {
   async addUser(username,email,password) 
   {
     const userCollection = await Users();
-    var hash = bcrypt.hashSync(password, salt);
-    //console.log("We are in add book");
+    if(await userCollection.findOne({ username: username })) throw "This username is already taken";
+    if(await userCollection.findOne({ email: email })) throw "This email ID is already in use";
+
+    var hash = await bcrypt.hashSync(password, salt);
     let newUser = {
        username : username,
        email: email,
-       password: hash,
+       hashedPassword: hash,
+       sessions: [],
        reviews: [],
        comments: []
     };
