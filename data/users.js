@@ -45,6 +45,7 @@ module.exports = {
        username : username,
        email: email,
        hashedPassword: hash,
+       listings: [],
        sessions: [],
        reviews: [],
        comments: []
