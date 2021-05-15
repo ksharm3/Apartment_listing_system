@@ -1,7 +1,7 @@
 {
-  "name": "project_apartment_list",
+  "name": "project-apartment_listing_system",
   "version": "1.0.0",
-  "description": "This is Group 24 Project",
+  "description": "This is a Web Programming Project by group 24: Kanishk Sharma, Snehil Patel, Omkar Sinha, Vraj Desai, Pavan Bandla",
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
